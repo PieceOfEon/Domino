@@ -6,18 +6,10 @@
         xmlns:local="clr-namespace:Domino"
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="1200">
+
     <Grid>
 
-        <!--<Rectangle RadiusX="10" RadiusY="10" Height="40" Stroke="Black" Width="100">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition>
-                        
-                    </RowDefinition>
-                </Grid.RowDefinitions>
-            </Grid>
-        </Rectangle>-->
-        <Border x:Name="third" Height="40" Width="100" CornerRadius="10" Background="Gray" Margin="530,382,570,362">
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_zero" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,700">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  x:Name="zero">
@@ -25,40 +17,591 @@
                     </ColumnDefinition>
                     <ColumnDefinition x:Name="one"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Label x:Name="elem0" Grid.Column="0" Content="3" Visibility="Visible"></Label>
-                <Label x:Name="elem1" Grid.Column="1" Content="5" Visibility="Visible"></Label>
-                <Ellipse  Grid.Column="0" Width="10" Height="10" Fill="Yellow"></Ellipse>
-                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,25,30,5"></Ellipse>
-                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="30,5,10,25"></Ellipse>
-                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow"></Ellipse>
-                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,5,30,25"></Ellipse>
-                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="30,25,10,5"></Ellipse>
-                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="30,5,10,25"></Ellipse>
-                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,25,30,5"></Ellipse>
+                <Label x:Name="elem0" Grid.Column="0" Content="{Binding [0].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem1" Grid.Column="1" Content="{Binding [0].y}" Visibility="Visible"></Label>
+
             </Grid>
 
         </Border>
-        <Border x:Name="third_Copy" Height="40" Width="100" CornerRadius="10" Background="Gray" Margin="403,384,697,360">
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_one" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="120,0,0,700" >
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition  x:Name="zero1"/>
-                    <ColumnDefinition x:Name="one1"/>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Label x:Name="elem2" Grid.Column="0" Content="2" Visibility="Visible"/>
-                <Label x:Name="elem3" Grid.Column="1" Content="4" Visibility="Visible"/>
-                <!--<Ellipse  Grid.Column="0" Width="10" Height="10" Fill="Yellow"/>-->
-                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,25,30,5"/>
-                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="30,5,10,25"/>
+                <Label x:Name="elem2" Grid.Column="0" Content="{Binding [1].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem3" Grid.Column="1" Content="{Binding [1].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow"></Ellipse>
+
+
+            </Grid>
+
+        </Border>
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_two" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="240,0,0,700" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem4" Grid.Column="0" Content="{Binding [2].x}" Visibility="Visible"/>
+                <Label x:Name="elem5" Grid.Column="1" Content="{Binding [2].y}" Visibility="Visible"/>
                 <!--<Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow"/>-->
-                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,5,30,25"/>
-                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="30,25,10,5"/>
-                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="30,5,10,25"/>
-                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,25,30,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+
             </Grid>
 
         </Border>
 
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_third" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="360,0,0,700" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem6" Grid.Column="0" Content="{Binding [3].x}" Visibility="Visible"/>
+                <Label x:Name="elem7" Grid.Column="1" Content="{Binding [3].y}" Visibility="Visible"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
 
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_four" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="480,0,0,700" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem8" Grid.Column="0" Content="{Binding [4].x}" Visibility="Visible"/>
+                <Label x:Name="elem9" Grid.Column="1" Content="{Binding [4].y}" Visibility="Visible"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_five" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="600,0,0,700" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem10" Grid.Column="0" Content="{Binding [5].x}" Visibility="Visible"/>
+                <Label x:Name="elem11" Grid.Column="1" Content="{Binding [5].y}" Visibility="Visible"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="19,13,19,13"/>
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="720,0,0,700" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem12" Grid.Column="0" Content="{Binding [6].x}" Visibility="Visible"/>
+                <Label x:Name="elem13" Grid.Column="1" Content="{Binding [6].y}" Visibility="Visible"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="30,5,8,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="17,5,21,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="30,21,8,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="17,21,21,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="4,5,34,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="4,21,34,5"/>
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="one_one" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,550" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem14" Grid.Column="0" Content="{Binding [7].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem15" Grid.Column="1" Content="{Binding [7].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow"></Ellipse>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow"></Ellipse>
+
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="one_two" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="120,0,0,550" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem16" Grid.Column="0" Content="{Binding [8].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem17" Grid.Column="1" Content="{Binding [8].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow"></Ellipse>
+
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="one_third" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="240,0,0,550" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem18" Grid.Column="0" Content="{Binding [9].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem19" Grid.Column="1" Content="{Binding [9].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow"></Ellipse>
+
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="one_four" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="360,0,0,550" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem20" Grid.Column="0" Content="{Binding [10].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem21" Grid.Column="1" Content="{Binding [10].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow"></Ellipse>
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="one_five" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="480,0,0,550" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem22" Grid.Column="0" Content="{Binding [11].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem23" Grid.Column="1" Content="{Binding [11].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="19,13,19,13"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow"></Ellipse>
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="one_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="600,0,0,550" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem24" Grid.Column="0" Content="{Binding [12].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem25" Grid.Column="1" Content="{Binding [12].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="30,5,8,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="17,5,21,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="30,21,8,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="17,21,21,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="4,5,34,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="4,21,34,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow"></Ellipse>
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="two_two" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,400" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem26" Grid.Column="0" Content="{Binding [13].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem27" Grid.Column="1" Content="{Binding [13].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="two_third" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="120,0,0,400" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem28" Grid.Column="0" Content="{Binding [14].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem29" Grid.Column="1" Content="{Binding [14].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="19,13,19,13"/>
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="two_four" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="240,0,0,400" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem30" Grid.Column="0" Content="{Binding [15].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem31" Grid.Column="1" Content="{Binding [15].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="two_five" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="360,0,0,400" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem32" Grid.Column="0" Content="{Binding [16].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem33" Grid.Column="1" Content="{Binding [16].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="19,13,19,13"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="two_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="480,0,0,400" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem34" Grid.Column="0" Content="{Binding [17].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem35" Grid.Column="1" Content="{Binding [17].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="30,5,8,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="17,5,21,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="30,21,8,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="17,21,21,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="4,5,34,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="4,21,34,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="third_third" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,250" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem36" Grid.Column="0" Content="{Binding [18].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem37" Grid.Column="1" Content="{Binding [18].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="19,13,19,13"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="19,13,19,13"/>
+
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="third_four" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="120,0,0,250" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem38" Grid.Column="0" Content="{Binding [19].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem39" Grid.Column="1" Content="{Binding [19].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="19,13,19,13"/>
+
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="third_five" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="240,0,0,250" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem40" Grid.Column="0" Content="{Binding [20].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem41" Grid.Column="1" Content="{Binding [20].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="19,13,19,13"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="19,13,19,13"/>
+
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="third_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="360,0,0,250" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem42" Grid.Column="0" Content="{Binding [21].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem43" Grid.Column="1" Content="{Binding [21].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="30,5,8,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="17,5,21,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="30,21,8,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="17,21,21,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="4,5,34,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="4,21,34,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="19,13,19,13"/>
+
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="four_four" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,100" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem44" Grid.Column="0" Content="{Binding [22].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem45" Grid.Column="1" Content="{Binding [22].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="four_five" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="120,0,0,100" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem46" Grid.Column="0" Content="{Binding [23].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem47" Grid.Column="1" Content="{Binding [23].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="19,13,19,13"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="four_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="240,0,0,100" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem48" Grid.Column="0" Content="{Binding [24].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem49" Grid.Column="1" Content="{Binding [24].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="30,5,8,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="17,5,21,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="30,21,8,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="17,21,21,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="4,5,34,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="4,21,34,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="five_five" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,-50" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem50" Grid.Column="0" Content="{Binding [25].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem51" Grid.Column="1" Content="{Binding [25].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="19,13,19,13"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="19,13,19,13"/>
+
+
+            </Grid>
+
+        </Border>
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="five_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="120,0,0,-50"  RenderTransformOrigin="0.5,0.5" MouseRightButtonDown="five_six_MouseRightButtonDown" AllowDrop="True" MouseLeftButtonDown="five_six_MouseLeftButtonDown" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem52" Grid.Column="0" Content="{Binding [26].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem53" Grid.Column="1" Content="{Binding [26].y}" Visibility="Visible" HorizontalAlignment="Right" Width="48"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="30,5,8,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="17,5,21,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="30,21,8,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="17,21,21,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="4,5,34,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="4,21,34,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="28,5,10,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,21,28,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="10,5,28,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="28,21,10,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="19,13,19,13"/>
+
+
+            </Grid>
+
+        </Border>
+
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="six_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,-200" >
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition  >
+
+                    </ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="elem54" Grid.Column="0" Content="{Binding [27].x}" Visibility="Visible"></Label>
+                <Label x:Name="elem55" Grid.Column="1" Content="{Binding [27].y}" Visibility="Visible"></Label>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="30,5,8,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="17,5,21,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="30,21,8,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="17,21,21,5"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="4,5,34,21"/>
+                <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="4,21,34,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="20,5,18,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="7,21,31,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="7,5,31,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="20,21,18,5"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="33,5,5,21"/>
+                <Ellipse Grid.Column="0" Width="10" Height="10" Fill="Yellow" Margin="33,21,5,5"/>
+
+
+            </Grid>
+
+        </Border>
 
     </Grid>
 </Window>
