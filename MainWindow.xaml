@@ -523,7 +523,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="five_five" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,-50" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="five_five" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,-50" MouseLeftButtonDown="five_five_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -548,7 +548,7 @@
             </Grid>
 
         </Border>
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="five_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="120,0,0,-50"  RenderTransformOrigin="0.5,0.5" MouseRightButtonDown="five_six_MouseRightButtonDown" AllowDrop="True" MouseLeftButtonDown="five_six_MouseLeftButtonDown" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="five_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="120,0,0,-50"  RenderTransformOrigin="0.5,0.5" MouseRightButtonDown="five_six_MouseRightButtonDown" AllowDrop="True" PreviewMouseMove="five_six_PreviewMouseMove" MouseLeftButtonDown="five_six_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -575,7 +575,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="six_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,-200" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="six_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,-200" MouseLeftButtonDown="six_six_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -602,6 +602,7 @@
             </Grid>
 
         </Border>
+        <Label x:Name="ALBE" Content="Label" HorizontalAlignment="Center" Margin="0,293,0,194" Width="270"/>
 
     </Grid>
 </Window>
