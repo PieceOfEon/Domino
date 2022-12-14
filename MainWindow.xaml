@@ -9,7 +9,7 @@
 
     <Grid>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_zero" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,700">
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_zero" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,700" MouseLeftButtonDown="zero_zero_MouseLeftButtonDown">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  x:Name="zero">
@@ -24,7 +24,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_one" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="120,0,0,700" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_one" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="120,0,0,700" MouseLeftButtonDown="zero_one_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -40,7 +40,7 @@
             </Grid>
 
         </Border>
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_two" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="240,0,0,700" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_two" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="240,0,0,700" MouseLeftButtonDown="zero_two_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  />
@@ -56,7 +56,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_third" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="360,0,0,700" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_third" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="360,0,0,700" MouseLeftButtonDown="zero_third_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  />
@@ -72,7 +72,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_four" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="480,0,0,700" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_four" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="480,0,0,700" MouseLeftButtonDown="zero_four_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  />
@@ -89,7 +89,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_five" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="600,0,0,700" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_five" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="600,0,0,700" MouseLeftButtonDown="zero_five_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  />
@@ -107,7 +107,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="720,0,0,700" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="zero_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="720,0,0,700" MouseLeftButtonDown="zero_six_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  />
@@ -126,7 +126,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="one_one" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,550" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="one_one" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,550" MouseLeftButtonDown="one_one_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -144,7 +144,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="one_two" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="120,0,0,550" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="one_two" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="120,0,0,550" MouseLeftButtonDown="one_two_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -163,7 +163,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="one_third" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="240,0,0,550" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="one_third" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="240,0,0,550" MouseLeftButtonDown="one_third_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -183,7 +183,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="one_four" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="360,0,0,550" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="one_four" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="360,0,0,550" MouseLeftButtonDown="one_four_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -203,7 +203,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="one_five" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="480,0,0,550" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="one_five" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="480,0,0,550" MouseLeftButtonDown="one_five_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -224,7 +224,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="one_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="600,0,0,550" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="one_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="600,0,0,550" MouseLeftButtonDown="one_six_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -246,7 +246,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="two_two" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,400" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="two_two" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,400" MouseLeftButtonDown="two_two_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -265,7 +265,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="two_third" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="120,0,0,400" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="two_third" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="120,0,0,400" MouseLeftButtonDown="two_third_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -285,7 +285,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="two_four" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="240,0,0,400" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="two_four" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="240,0,0,400" MouseLeftButtonDown="two_four_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -307,7 +307,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="two_five" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="360,0,0,400" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="two_five" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="360,0,0,400" MouseLeftButtonDown="two_five_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -330,7 +330,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="two_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="480,0,0,400" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="two_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="480,0,0,400" MouseLeftButtonDown="two_six_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -354,7 +354,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="third_third" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,250" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="third_third" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,250" MouseLeftButtonDown="third_third_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -376,7 +376,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="third_four" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="120,0,0,250" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="third_four" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="120,0,0,250" MouseLeftButtonDown="third_four_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -399,7 +399,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="third_five" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="240,0,0,250" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="third_five" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="240,0,0,250" MouseLeftButtonDown="third_five_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -423,7 +423,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="third_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="360,0,0,250" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="third_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="360,0,0,250" MouseLeftButtonDown="third_six_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -448,7 +448,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="four_four" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,100" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="four_four" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="0,0,0,100" MouseLeftButtonDown="four_four_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -472,7 +472,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="four_five" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="120,0,0,100" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="four_five" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="120,0,0,100" MouseLeftButtonDown="four_five_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
@@ -497,7 +497,7 @@
 
         </Border>
 
-        <Border BorderThickness="2" BorderBrush="Black" x:Name="four_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="240,0,0,100" >
+        <Border BorderThickness="2" BorderBrush="Black" x:Name="four_six" Height="40" Width="100" CornerRadius="10" Background="Gray" HorizontalAlignment="Left" Margin="240,0,0,100" MouseLeftButtonDown="four_six_MouseLeftButtonDown" >
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition  >
