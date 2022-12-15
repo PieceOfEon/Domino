@@ -602,7 +602,6 @@
             </Grid>
 
         </Border>
-        <Label x:Name="ALBE" Content="Label" HorizontalAlignment="Center" Margin="0,293,0,194" Width="270"/>
 
     </Grid>
 </Window>
