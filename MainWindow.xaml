@@ -586,8 +586,8 @@
                     </ColumnDefinition>
                     <ColumnDefinition ></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Label x:Name="elem54" Grid.Column="0" Content="{Binding [27].x}" Visibility="Hidden"></Label>
-                <Label x:Name="elem55" Grid.Column="1" Content="{Binding [27].y}" Visibility="Hidden"></Label>
+                <!--<Label x:Name="elem54" Grid.Column="0" Content="{Binding [27].x}" Visibility="Hidden"></Label>
+                <Label x:Name="elem55" Grid.Column="1" Content="{Binding [27].y}" Visibility="Hidden"></Label>-->
                 <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="30,5,8,21"/>
                 <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="17,5,21,21"/>
                 <Ellipse Grid.Column="1" Width="10" Height="10" Fill="Yellow" Margin="30,21,8,5"/>
@@ -605,6 +605,19 @@
             </Grid>
 
         </Border>
+        <Border  x:Name="borderP2" HorizontalAlignment="Center" Height="140" Width="1200" Margin="0,644,0,0" Background="#7F008000">
+            
 
+        </Border>
+        <Border  x:Name="borderP1" HorizontalAlignment="Center" Height="140" Width="1200" Margin="0,365,0,0" Background="#7F008000" Visibility="Hidden">
+
+
+        </Border>
+        <Button Width="100" Height="100" Content="Завершить ход" Margin="1016,400,84,284" Background="#7FDDDDDD" Click="Button_Click">
+            
+        </Button>
+        <Button Width="100" Height="100" Content="Взять кость" Click="Button_Click_1">
+            
+        </Button>
     </Grid>
 </Window>

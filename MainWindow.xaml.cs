@@ -20,11 +20,11 @@ namespace Domino
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        List<Bone> bon = new List<Bone>();
+        Random random = new Random();
+        List<Border> bon = new List<Border>();
         List<Bone> snake = new List<Bone>();
-        List<Bone> player1 = new List<Bone>();
-        List<Bone> Player2 = new List<Bone>();
+        List<Border> player1 = new List<Border>();
+        List<Border> player2 = new List<Border>();
         bool b = true;
         int a = 0;
         int kol = 0;
@@ -39,52 +39,120 @@ namespace Domino
             
             InitializeComponent();
 
-            //five_six.MouseLeftButtonDown += five_six_MouseLeftButtonDown;
-            //third.BindingGroup.Items.Add(elem0);
-            //MessageBox.Show(Convert.ToString(elem0));
-            Random random = new Random();
-            bon.Add(new Bone("0","0"));//1
-            bon.Add(new Bone("0", "1"));//2
-            bon.Add(new Bone("0", "2"));//3
-            bon.Add(new Bone("0", "3"));//4
-            bon.Add(new Bone("0", "4"));//5
-            bon.Add(new Bone("0", "5"));//6
-            bon.Add(new Bone("0", "6"));//7
-
-            bon.Add(new Bone("1", "1"));//8
-            bon.Add(new Bone("1", "2"));//9
-            bon.Add(new Bone("1", "3"));//10
-            bon.Add(new Bone("1", "4"));//11
-            bon.Add(new Bone("1", "5"));//12
-            bon.Add(new Bone("1", "6"));//13
-
-            bon.Add(new Bone("2", "2"));//14
-            bon.Add(new Bone("2", "3"));//15
-            bon.Add(new Bone("2", "4"));//16
-            bon.Add(new Bone("2", "5"));//17
-            bon.Add(new Bone("2", "6"));//18
-
-            bon.Add(new Bone("3", "3"));//19
-            bon.Add(new Bone("3", "4"));//20
-            bon.Add(new Bone("3", "5"));//21
-            bon.Add(new Bone("3", "6"));//22
             
-            bon.Add(new Bone("4", "4"));//23
-            bon.Add(new Bone("4", "5"));//24
-            bon.Add(new Bone("4", "6"));//25
 
-            bon.Add(new Bone("5", "5"));//26
-            bon.Add(new Bone("5", "6"));//27
+            bon.Add(zero_zero);//1
+            bon.Add(zero_one);//2
+            bon.Add(zero_two);//3
+            bon.Add(zero_third);//4
+            bon.Add(zero_four);//5
+            bon.Add(zero_five);//6
+            bon.Add(zero_six);//7
 
-            bon.Add(new Bone("6", "6"));//28
+            bon.Add(one_one);//8
+            bon.Add(one_two);//9
+            bon.Add(one_third);//10
+            bon.Add(one_four);//11
+            bon.Add(one_five);//12
+            bon.Add(one_six);//13
+
+            bon.Add(two_two);//14
+            bon.Add(two_third);//15
+            bon.Add(two_four);//16
+            bon.Add(two_five);//17
+            bon.Add(two_six);//18
+
+            bon.Add(third_third);//19
+            bon.Add(third_four);//20
+            bon.Add(third_five);//21
+            bon.Add(third_six);//22
+
+            bon.Add(four_four);//23
+            bon.Add(four_five);//24
+            bon.Add(four_six);//25
+
+            bon.Add(five_five);//26
+            bon.Add(five_six);//27
+
+            bon.Add(six_six);//28
 
             
-           
+            
+
 
             this.DataContext=bon;
+            rand();
+            rand2();
             //MessageBox.Show(Convert.ToString(bon[5].y));
         }
 
+        private void rand()
+        {
+            for(int i=0; i < bon.Count; i++)
+            {
+                bon[i].Visibility = Visibility.Hidden;
+            }
+
+            for (int i = player1.Count; i < 7; i++)
+            {
+                int a = random.Next(0, bon.Count);
+                player1.Add(bon[a]);
+                player1[i].Visibility = Visibility.Visible;
+                bon.Remove(bon[a]);
+               
+            }
+
+            for(int i = 0; i < 7; i++)
+            {
+                player1[i].Margin = new Thickness(120 + (i * 120), 0, 0, -450);
+            }
+        }
+
+        private void rand2()
+        {
+            for (int i = 0; i < bon.Count; i++)
+            {
+                bon[i].Visibility = Visibility.Hidden;
+            }
+
+            for (int i = player2.Count; i < 7; i++)
+            {
+                int b = random.Next(0, bon.Count);
+                player2.Add(bon[b]);
+                player2[i].Visibility = Visibility.Visible;
+                bon.Remove(bon[b]);
+            }
+
+            for (int i = 0; i < 7; i++)
+            {
+                player2[i].Margin = new Thickness(120 + (i * 120), 0, 0, -600);
+            }
+        }
+
+        private void borderplayer()
+        {
+            if(borderP1.IsVisible)
+            {
+                borderP1.Visibility = Visibility.Hidden;
+                borderP2.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                borderP1.Visibility = Visibility.Visible;
+                borderP2.Visibility = Visibility.Hidden;
+            }
+        }
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (borderP1.IsVisible)
+            {
+                rand();
+            }
+            else
+            {
+                rand2();
+            }
+        }
         private void zero_zero_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             kolUni = 0;
@@ -93,6 +161,7 @@ namespace Domino
             snake.Add(new Bone("0", "0"));
             if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                borderplayer();
                 if (snake.Count > 10 && snake.Count < 17)
                 {
                     if (snake[snake.Count - 1].x != snake[snake.Count - 2].x)
@@ -188,6 +257,7 @@ namespace Domino
                     k1 = 120;
                     k2 = 550 - 80;
                 }
+                borderplayer();
             }
             else
             {
@@ -385,6 +455,7 @@ namespace Domino
                         snake.Add(new Bone("1", "0"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -582,6 +653,7 @@ namespace Domino
                         snake.Add(new Bone("2", "0"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -779,6 +851,7 @@ namespace Domino
                         snake.Add(new Bone("3", "0"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -976,6 +1049,7 @@ namespace Domino
                         snake.Add(new Bone("4", "0"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -1173,6 +1247,7 @@ namespace Domino
                         snake.Add(new Bone("5", "0"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -1370,6 +1445,7 @@ namespace Domino
                         snake.Add(new Bone("6", "0"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -1482,6 +1558,7 @@ namespace Domino
                     k1 = 120;
                     k2 = 550 - 80;
                 }
+                borderplayer();
             }
             else
             {
@@ -1679,6 +1756,7 @@ namespace Domino
                         snake.Add(new Bone("2", "1"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -1876,6 +1954,7 @@ namespace Domino
                         snake.Add(new Bone("3", "1"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -2073,6 +2152,7 @@ namespace Domino
                         snake.Add(new Bone("4", "1"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -2270,6 +2350,7 @@ namespace Domino
                         snake.Add(new Bone("5", "1"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -2467,6 +2548,7 @@ namespace Domino
                         snake.Add(new Bone("6", "1"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -2580,6 +2662,7 @@ namespace Domino
                     k1 = 120;
                     k2 = 550 - 80;
                 }
+                borderplayer();
             }
             else
             {
@@ -2777,6 +2860,7 @@ namespace Domino
                         snake.Add(new Bone("3", "2"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -2974,6 +3058,7 @@ namespace Domino
                         snake.Add(new Bone("4", "2"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -3172,6 +3257,7 @@ namespace Domino
                         snake.Add(new Bone("5", "2"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -3379,6 +3465,7 @@ namespace Domino
                         snake.Add(new Bone("6", "2"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -3492,6 +3579,7 @@ namespace Domino
                     k1 = 120;
                     k2 = 550 - 80;
                 }
+                borderplayer();
             }
             else
             {
@@ -3689,6 +3777,7 @@ namespace Domino
                         snake.Add(new Bone("4", "3"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -3884,6 +3973,7 @@ namespace Domino
                         snake.Add(new Bone("5", "3"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -4081,6 +4171,7 @@ namespace Domino
                         snake.Add(new Bone("6", "3"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -4193,7 +4284,7 @@ namespace Domino
                     k1 = 120;
                     k2 = 550 - 80;
                 }
-
+                borderplayer();
             }
             else
             {
@@ -4391,6 +4482,7 @@ namespace Domino
                         snake.Add(new Bone("5", "4"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -4589,6 +4681,7 @@ namespace Domino
                         snake.Add(new Bone("6", "4"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -4701,6 +4794,7 @@ namespace Domino
                     k1 = 120;
                     k2 = 550 - 80;
                 }
+                borderplayer();
 
             }
             else if(snake.Count==1)
@@ -4912,6 +5006,7 @@ namespace Domino
                         snake.Add(new Bone("6", "5"));
                     }
                 }
+                borderplayer();
             }
             else
             {
@@ -5024,6 +5119,7 @@ namespace Domino
                     k1 = 120;
                     k2 = 550 - 80;
                 }
+                borderplayer();
 
             }
             else
@@ -5037,6 +5133,12 @@ namespace Domino
 
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            borderplayer();
+        }
+
+        
     }
     public class Bone
     {
