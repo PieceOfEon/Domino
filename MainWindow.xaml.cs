@@ -23,6 +23,9 @@ namespace Domino
 
         List<Bone> bon = new List<Bone>();
         List<Bone> snake = new List<Bone>();
+        List<Bone> player1 = new List<Bone>();
+        List<Bone> Player2 = new List<Bone>();
+        bool b = true;
         int a = 0;
         int kol = 0;
         int kol2 = 7;
@@ -39,7 +42,7 @@ namespace Domino
             //five_six.MouseLeftButtonDown += five_six_MouseLeftButtonDown;
             //third.BindingGroup.Items.Add(elem0);
             //MessageBox.Show(Convert.ToString(elem0));
-
+            Random random = new Random();
             bon.Add(new Bone("0","0"));//1
             bon.Add(new Bone("0", "1"));//2
             bon.Add(new Bone("0", "2"));//3
@@ -82,27 +85,22 @@ namespace Domino
             //MessageBox.Show(Convert.ToString(bon[5].y));
         }
 
-        private void five_six_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (a >= 360)
-            { a = 0; }
-            a += 90;
-            five_six.RenderTransform = new RotateTransform(a);
-        }
-
-        private void five_six_PreviewMouseMove(object sender, MouseEventArgs e)
-        {
-  
-        }
-
         private void zero_zero_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             kolUni = 0;
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("0", "0"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -190,45 +188,6 @@ namespace Domino
                     k1 = 120;
                     k2 = 550 - 80;
                 }
-
-                //if (snake.Count < 2)
-                //{
-                //    return;
-                //}
-                //else if (snake.Count == 2)
-                //{
-                //    if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
-                //    {
-                //        MessageBox.Show(k1 + " " + kolUni + " " + k2);
-                //        a = 0;
-                //        a += 180;
-                //        zero_zero.RenderTransform = new RotateTransform(a);
-                //        zero_zero.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-                //    }
-                //}
-                //else if (snake.Count >= 3)
-                //{
-                //    MessageBox.Show(k1 + " " + kolUni + " " + k2);
-                //    if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
-                //    {
-                //        if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
-                //        {
-
-                //            a = 0;
-                //            a += 180;
-                //            zero_zero.RenderTransform = new RotateTransform(a);
-                //            zero_zero.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-                //        }
-                //    }
-                //    else if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
-                //    {
-
-                //        a = 0;
-                //        a += 180;
-                //        zero_zero.RenderTransform = new RotateTransform(a);
-                //        zero_zero.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-                //    }
-                //}
             }
             else
             {
@@ -244,8 +203,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("0", "1"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -342,7 +309,7 @@ namespace Domino
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                       
                         a = 0;
                         a += 180;
                         zero_one.RenderTransform = new RotateTransform(a);
@@ -351,15 +318,21 @@ namespace Domino
                         snake.Add(new Bone("1", "0"));
                     }
                 }
-                else if (snake.Count >= 3)
+                else if (snake.Count >= 3 && snake.Count < 10)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                    
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
                         {
 
                             a = 0;
+                            if (kol == 9)
+                            {
+                                a += 90;
+                                k1 -= 140;
+                                k2 -= 200;
+                            }
                             a += 180;
                             zero_one.RenderTransform = new RotateTransform(a);
                             zero_one.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -371,6 +344,40 @@ namespace Domino
                     {
 
                         a = 0;
+                        if (kol == 9)
+                        {
+                            a += 90;
+                            k1 -= 140;
+                            k2 -= 200;
+                        }
+                        a += 180;
+                        zero_one.RenderTransform = new RotateTransform(a);
+                        zero_one.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("1", "0"));
+                    }
+                }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        zero_one.RenderTransform = new RotateTransform(a);
+                        zero_one.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("1", "0"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
                         a += 180;
                         zero_one.RenderTransform = new RotateTransform(a);
                         zero_one.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -393,8 +400,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("0", "2"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -491,24 +506,30 @@ namespace Domino
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                        
                         a = 0;
                         a += 180;
                         zero_two.RenderTransform = new RotateTransform(a);
                         zero_two.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
                         snake.Remove(snake[snake.Count - 1]);
-                        snake.Add(new Bone("1", "0"));
+                        snake.Add(new Bone("2", "0"));
                     }
                 }
-                else if (snake.Count >= 3)
+                else if (snake.Count >= 3 && snake.Count < 10)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                   
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
                         {
 
                             a = 0;
+                            if (kol == 9)
+                            {
+                                a += 90;
+                                k1 -= 140;
+                                k2 -= 200;
+                            }
                             a += 180;
                             zero_two.RenderTransform = new RotateTransform(a);
                             zero_two.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -520,6 +541,40 @@ namespace Domino
                     {
 
                         a = 0;
+                        if (kol == 9)
+                        {
+                            a += 90;
+                            k1 -= 140;
+                            k2 -= 200;
+                        }
+                        a += 180;
+                        zero_two.RenderTransform = new RotateTransform(a);
+                        zero_two.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("2", "0"));
+                    }
+                }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        zero_two.RenderTransform = new RotateTransform(a);
+                        zero_two.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("2", "0"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
                         a += 180;
                         zero_two.RenderTransform = new RotateTransform(a);
                         zero_two.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -542,8 +597,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("0", "3"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -640,7 +703,7 @@ namespace Domino
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                        
                         a = 0;
                         a += 180;
                         zero_third.RenderTransform = new RotateTransform(a);
@@ -649,9 +712,9 @@ namespace Domino
                         snake.Add(new Bone("3", "0"));
                     }
                 }
-                else if (snake.Count >= 3)
+                else if (snake.Count >= 3 && snake.Count < 10)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                    
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
@@ -688,6 +751,34 @@ namespace Domino
                         snake.Add(new Bone("3", "0"));
                     }
                 }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        zero_third.RenderTransform = new RotateTransform(a);
+                        zero_third.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("3", "0"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        zero_third.RenderTransform = new RotateTransform(a);
+                        zero_third.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("3", "0"));
+                    }
+                }
             }
             else
             {
@@ -703,8 +794,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("0", "4"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -801,7 +900,7 @@ namespace Domino
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                        
                         a = 0;
                         a += 180;
                         zero_four.RenderTransform = new RotateTransform(a);
@@ -810,15 +909,21 @@ namespace Domino
                         snake.Add(new Bone("4", "0"));
                     }
                 }
-                else if (snake.Count >= 3)
+                else if (snake.Count >= 3 && snake.Count < 10)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                    
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
                         {
 
                             a = 0;
+                            if (kol == 9)
+                            {
+                                a += 90;
+                                k1 -= 140;
+                                k2 -= 200;
+                            }
                             a += 180;
                             zero_four.RenderTransform = new RotateTransform(a);
                             zero_four.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -830,6 +935,40 @@ namespace Domino
                     {
 
                         a = 0;
+                        if (kol == 9)
+                        {
+                            a += 90;
+                            k1 -= 140;
+                            k2 -= 200;
+                        }
+                        a += 180;
+                        zero_four.RenderTransform = new RotateTransform(a);
+                        zero_four.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("4", "0"));
+                    }
+                }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        zero_four.RenderTransform = new RotateTransform(a);
+                        zero_four.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("4", "0"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
                         a += 180;
                         zero_four.RenderTransform = new RotateTransform(a);
                         zero_four.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -852,8 +991,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("0", "5"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -950,7 +1097,7 @@ namespace Domino
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                        
                         a = 0;
                         a += 180;
                         zero_five.RenderTransform = new RotateTransform(a);
@@ -959,15 +1106,21 @@ namespace Domino
                         snake.Add(new Bone("5", "0"));
                     }
                 }
-                else if (snake.Count >= 3)
+                else if (snake.Count >= 3 && snake.Count < 10)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                    
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
                         {
 
                             a = 0;
+                            if (kol == 9)
+                            {
+                                a += 90;
+                                k1 -= 140;
+                                k2 -= 200;
+                            }
                             a += 180;
                             zero_five.RenderTransform = new RotateTransform(a);
                             zero_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -979,6 +1132,40 @@ namespace Domino
                     {
 
                         a = 0;
+                        if (kol == 9)
+                        {
+                            a += 90;
+                            k1 -= 140;
+                            k2 -= 200;
+                        }
+                        a += 180;
+                        zero_five.RenderTransform = new RotateTransform(a);
+                        zero_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("5", "0"));
+                    }
+                }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        zero_five.RenderTransform = new RotateTransform(a);
+                        zero_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("5", "0"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
                         a += 180;
                         zero_five.RenderTransform = new RotateTransform(a);
                         zero_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -1001,8 +1188,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("0", "6"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -1099,7 +1294,7 @@ namespace Domino
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                       
                         a = 0;
                         a += 180;
                         zero_six.RenderTransform = new RotateTransform(a);
@@ -1108,15 +1303,21 @@ namespace Domino
                         snake.Add(new Bone("6", "0"));
                     }
                 }
-                else if (snake.Count >= 3)
+                else if (snake.Count >= 3 && snake.Count < 10)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                    
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
                         {
 
                             a = 0;
+                            if (kol == 9)
+                            {
+                                a += 90;
+                                k1 -= 140;
+                                k2 -= 200;
+                            }
                             a += 180;
                             zero_six.RenderTransform = new RotateTransform(a);
                             zero_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -1128,6 +1329,40 @@ namespace Domino
                     {
 
                         a = 0;
+                        if (kol == 9)
+                        {
+                            a += 90;
+                            k1 -= 140;
+                            k2 -= 200;
+                        }
+                        a += 180;
+                        zero_six.RenderTransform = new RotateTransform(a);
+                        zero_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("6", "0"));
+                    }
+                }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        zero_six.RenderTransform = new RotateTransform(a);
+                        zero_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("6", "0"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
                         a += 180;
                         zero_six.RenderTransform = new RotateTransform(a);
                         zero_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -1150,8 +1385,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("1", "1"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -1239,45 +1482,6 @@ namespace Domino
                     k1 = 120;
                     k2 = 550 - 80;
                 }
-
-                //if (snake.Count < 2)
-                //{
-                //    return;
-                //}
-                //else if (snake.Count == 2)
-                //{
-                //    if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
-                //    {
-                //        MessageBox.Show(k1 + " " + kolUni + " " + k2);
-                //        a = 0;
-                //        a += 180;
-                //        one_one.RenderTransform = new RotateTransform(a);
-                //        one_one.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-                //    }
-                //}
-                //else if (snake.Count >= 3)
-                //{
-                //    MessageBox.Show(k1 + " " + kolUni + " " + k2);
-                //    if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
-                //    {
-                //        if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
-                //        {
-
-                //            a = 0;
-                //            a += 180;
-                //            one_one.RenderTransform = new RotateTransform(a);
-                //            one_one.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-                //        }
-                //    }
-                //    else if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
-                //    {
-
-                //        a = 0;
-                //        a += 180;
-                //        one_one.RenderTransform = new RotateTransform(a);
-                //        one_one.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-                //    }
-                //}
             }
             else
             {
@@ -1293,8 +1497,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("1", "2"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -1391,7 +1603,7 @@ namespace Domino
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                        
                         a = 0;
                         a += 180;
                         one_two.RenderTransform = new RotateTransform(a);
@@ -1400,15 +1612,21 @@ namespace Domino
                         snake.Add(new Bone("2", "1"));
                     }
                 }
-                else if (snake.Count >= 3)
+                else if (snake.Count >= 3 && snake.Count < 10)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                    
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
                         {
 
                             a = 0;
+                            if (kol == 9)
+                            {
+                                a += 90;
+                                k1 -= 140;
+                                k2 -= 200;
+                            }
                             a += 180;
                             one_two.RenderTransform = new RotateTransform(a);
                             one_two.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -1420,6 +1638,40 @@ namespace Domino
                     {
 
                         a = 0;
+                        if (kol == 9)
+                        {
+                            a += 90;
+                            k1 -= 140;
+                            k2 -= 200;
+                        }
+                        a += 180;
+                        one_two.RenderTransform = new RotateTransform(a);
+                        one_two.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("2", "1"));
+                    }
+                }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        one_two.RenderTransform = new RotateTransform(a);
+                        one_two.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("2", "1"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
                         a += 180;
                         one_two.RenderTransform = new RotateTransform(a);
                         one_two.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -1442,8 +1694,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("1", "3"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -1540,7 +1800,7 @@ namespace Domino
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                        
                         a = 0;
                         a += 180;
                         one_third.RenderTransform = new RotateTransform(a);
@@ -1549,15 +1809,21 @@ namespace Domino
                         snake.Add(new Bone("3", "1"));
                     }
                 }
-                else if (snake.Count >= 3)
+                else if (snake.Count >= 3 && snake.Count < 10)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                    
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
                         {
 
                             a = 0;
+                            if (kol == 9)
+                            {
+                                a += 90;
+                                k1 -= 140;
+                                k2 -= 200;
+                            }
                             a += 180;
                             one_third.RenderTransform = new RotateTransform(a);
                             one_third.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -1569,6 +1835,40 @@ namespace Domino
                     {
 
                         a = 0;
+                        if (kol == 9)
+                        {
+                            a += 90;
+                            k1 -= 140;
+                            k2 -= 200;
+                        }
+                        a += 180;
+                        one_third.RenderTransform = new RotateTransform(a);
+                        one_third.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("3", "1"));
+                    }
+                }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        one_third.RenderTransform = new RotateTransform(a);
+                        one_third.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("3", "1"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
                         a += 180;
                         one_third.RenderTransform = new RotateTransform(a);
                         one_third.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -1591,8 +1891,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("1", "4"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -1689,7 +1997,7 @@ namespace Domino
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                        
                         a = 0;
                         a += 180;
                         one_four.RenderTransform = new RotateTransform(a);
@@ -1698,15 +2006,21 @@ namespace Domino
                         snake.Add(new Bone("4", "1"));
                     }
                 }
-                else if (snake.Count >= 3)
+                else if (snake.Count >= 3 && snake.Count < 10)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                    
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
                         {
 
                             a = 0;
+                            if (kol == 9)
+                            {
+                                a += 90;
+                                k1 -= 140;
+                                k2 -= 200;
+                            }
                             a += 180;
                             one_four.RenderTransform = new RotateTransform(a);
                             one_four.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -1718,6 +2032,40 @@ namespace Domino
                     {
 
                         a = 0;
+                        if (kol == 9)
+                        {
+                            a += 90;
+                            k1 -= 140;
+                            k2 -= 200;
+                        }
+                        a += 180;
+                        one_four.RenderTransform = new RotateTransform(a);
+                        one_four.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("4", "1"));
+                    }
+                }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        one_four.RenderTransform = new RotateTransform(a);
+                        one_four.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("4", "1"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
                         a += 180;
                         one_four.RenderTransform = new RotateTransform(a);
                         one_four.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -1740,8 +2088,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("1", "5"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -1838,7 +2194,7 @@ namespace Domino
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                        
                         a = 0;
                         a += 180;
                         one_five.RenderTransform = new RotateTransform(a);
@@ -1847,15 +2203,21 @@ namespace Domino
                         snake.Add(new Bone("5", "1"));
                     }
                 }
-                else if (snake.Count >= 3)
+                else if (snake.Count >= 3 && snake.Count < 10)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                    
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
                         {
 
                             a = 0;
+                            if (kol == 9)
+                            {
+                                a += 90;
+                                k1 -= 140;
+                                k2 -= 200;
+                            }
                             a += 180;
                             one_five.RenderTransform = new RotateTransform(a);
                             one_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -1867,6 +2229,40 @@ namespace Domino
                     {
 
                         a = 0;
+                        if (kol == 9)
+                        {
+                            a += 90;
+                            k1 -= 140;
+                            k2 -= 200;
+                        }
+                        a += 180;
+                        one_five.RenderTransform = new RotateTransform(a);
+                        one_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("5", "1"));
+                    }
+                }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        one_five.RenderTransform = new RotateTransform(a);
+                        one_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("5", "1"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
                         a += 180;
                         one_five.RenderTransform = new RotateTransform(a);
                         one_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -1889,8 +2285,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("1", "6"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -1987,7 +2391,7 @@ namespace Domino
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                        
                         a = 0;
                         a += 180;
                         one_six.RenderTransform = new RotateTransform(a);
@@ -1996,15 +2400,21 @@ namespace Domino
                         snake.Add(new Bone("6", "1"));
                     }
                 }
-                else if (snake.Count >= 3)
+                else if (snake.Count >= 3 && snake.Count < 10)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                   
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
                         {
 
                             a = 0;
+                            if (kol == 9)
+                            {
+                                a += 90;
+                                k1 -= 140;
+                                k2 -= 200;
+                            }
                             a += 180;
                             one_six.RenderTransform = new RotateTransform(a);
                             one_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -2016,6 +2426,40 @@ namespace Domino
                     {
 
                         a = 0;
+                        if (kol == 9)
+                        {
+                            a += 90;
+                            k1 -= 140;
+                            k2 -= 200;
+                        }
+                        a += 180;
+                        one_six.RenderTransform = new RotateTransform(a);
+                        one_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("6", "1"));
+                    }
+                }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        one_six.RenderTransform = new RotateTransform(a);
+                        one_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("6", "1"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
                         a += 180;
                         one_six.RenderTransform = new RotateTransform(a);
                         one_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -2034,12 +2478,21 @@ namespace Domino
 
         private void two_two_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            
             kolUni = 0;
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("2", "2"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -2127,45 +2580,6 @@ namespace Domino
                     k1 = 120;
                     k2 = 550 - 80;
                 }
-
-                //if (snake.Count < 2)
-                //{
-                //    return;
-                //}
-                //else if (snake.Count == 2)
-                //{
-                //    if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
-                //    {
-                //        MessageBox.Show(k1 + " " + kolUni + " " + k2);
-                //        a = 0;
-                //        a += 180;
-                //        two_two.RenderTransform = new RotateTransform(a);
-                //        two_two.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-                //    }
-                //}
-                //else if (snake.Count >= 3)
-                //{
-                //    MessageBox.Show(k1 + " " + kolUni + " " + k2);
-                //    if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
-                //    {
-                //        if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
-                //        {
-
-                //            a = 0;
-                //            a += 180;
-                //            two_two.RenderTransform = new RotateTransform(a);
-                //            two_two.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-                //        }
-                //    }
-                //    else if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
-                //    {
-
-                //        a = 0;
-                //        a += 180;
-                //        two_two.RenderTransform = new RotateTransform(a);
-                //        two_two.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-                //    }
-                //}
             }
             else
             {
@@ -2181,8 +2595,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("2", "3"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -2279,7 +2701,7 @@ namespace Domino
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                        
                         a = 0;
                         a += 180;
                         two_third.RenderTransform = new RotateTransform(a);
@@ -2288,15 +2710,21 @@ namespace Domino
                         snake.Add(new Bone("3", "2"));
                     }
                 }
-                else if (snake.Count >= 3)
+                else if (snake.Count >= 3 && snake.Count < 10)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                    
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
                         {
 
                             a = 0;
+                            if (kol == 9)
+                            {
+                                a += 90;
+                                k1 -= 140;
+                                k2 -= 200;
+                            }
                             a += 180;
                             two_third.RenderTransform = new RotateTransform(a);
                             two_third.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -2308,6 +2736,40 @@ namespace Domino
                     {
 
                         a = 0;
+                        if (kol == 9)
+                        {
+                            a += 90;
+                            k1 -= 140;
+                            k2 -= 200;
+                        }
+                        a += 180;
+                        two_third.RenderTransform = new RotateTransform(a);
+                        two_third.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("3", "2"));
+                    }
+                }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        two_third.RenderTransform = new RotateTransform(a);
+                        two_third.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("3", "2"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
                         a += 180;
                         two_third.RenderTransform = new RotateTransform(a);
                         two_third.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -2330,8 +2792,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("2", "4"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -2424,11 +2894,11 @@ namespace Domino
                 {
                     return;
                 }
-                else if (snake.Count == 2)
+                else if (snake.Count >= 3 && snake.Count < 10)
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                        
                         a = 0;
                         a += 180;
                         two_four.RenderTransform = new RotateTransform(a);
@@ -2439,13 +2909,19 @@ namespace Domino
                 }
                 else if (snake.Count >= 3)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                    
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
                         {
 
                             a = 0;
+                            if (kol == 9)
+                            {
+                                a += 90;
+                                k1 -= 140;
+                                k2 -= 200;
+                            }
                             a += 180;
                             two_four.RenderTransform = new RotateTransform(a);
                             two_four.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -2457,6 +2933,40 @@ namespace Domino
                     {
 
                         a = 0;
+                        if (kol == 9)
+                        {
+                            a += 90;
+                            k1 -= 140;
+                            k2 -= 200;
+                        }
+                        a += 180;
+                        two_four.RenderTransform = new RotateTransform(a);
+                        two_four.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("4", "2"));
+                    }
+                }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        two_four.RenderTransform = new RotateTransform(a);
+                        two_four.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("4", "2"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
                         a += 180;
                         two_four.RenderTransform = new RotateTransform(a);
                         two_four.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -2479,8 +2989,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("2", "5"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -2577,7 +3095,7 @@ namespace Domino
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                       
                         a = 0;
                         a += 180;
                         two_five.RenderTransform = new RotateTransform(a);
@@ -2586,15 +3104,22 @@ namespace Domino
                         snake.Add(new Bone("5", "2"));
                     }
                 }
-                else if (snake.Count >= 3)
+                else if (snake.Count >= 3 && snake.Count < 10)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                    
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
                         {
 
                             a = 0;
+                            if (kol == 9)
+                            {
+                                a += 90;
+                                k1 -= 140;
+                                k2 -= 200;
+                            }
+                            
                             a += 180;
                             two_five.RenderTransform = new RotateTransform(a);
                             two_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -2606,6 +3131,40 @@ namespace Domino
                     {
 
                         a = 0;
+                        if (kol == 9)
+                        {
+                            a += 90;
+                            k1 -= 140;
+                            k2 -= 200;
+                        }
+                        a += 180;
+                        two_five.RenderTransform = new RotateTransform(a);
+                        two_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("5", "2"));
+                    }
+                }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        two_five.RenderTransform = new RotateTransform(a);
+                        two_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("5", "2"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
                         a += 180;
                         two_five.RenderTransform = new RotateTransform(a);
                         two_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -2628,8 +3187,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("2", "6"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -2726,7 +3293,7 @@ namespace Domino
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                        
                         a = 0;
                         a += 180;
                         two_six.RenderTransform = new RotateTransform(a);
@@ -2735,15 +3302,26 @@ namespace Domino
                         snake.Add(new Bone("6", "2"));
                     }
                 }
-                else if (snake.Count >= 3)
+                else if (snake.Count >= 3 && snake.Count < 10)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                    
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
                         {
 
                             a = 0;
+                            if (kol == 9)
+                            {
+                                a += 90;
+                                k1 -= 140;
+                                k2 -= 200;
+                            }
+                            else if (kol2 < 7 && kol2 > 0)
+                            {
+                                k1 += 200;
+                                k2 -= 80;
+                            }
                             a += 180;
                             two_six.RenderTransform = new RotateTransform(a);
                             two_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -2755,6 +3333,45 @@ namespace Domino
                     {
 
                         a = 0;
+                        if (kol == 9)
+                        {
+                            a += 90;
+                            k1 -= 140;
+                            k2 -= 200;
+                        }
+                        else if (kol2 < 7 && kol2 > 0)
+                        {
+                            k1 += 200;
+                            k2 -= 80;
+                        }
+                        a += 180;
+                        two_six.RenderTransform = new RotateTransform(a);
+                        two_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("6", "2"));
+                    }
+                }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        two_six.RenderTransform = new RotateTransform(a);
+                        two_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("6", "2"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
                         a += 180;
                         two_six.RenderTransform = new RotateTransform(a);
                         two_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -2778,8 +3395,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("3", "3"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -2867,46 +3492,6 @@ namespace Domino
                     k1 = 120;
                     k2 = 550 - 80;
                 }
-
-                //if (snake.Count < 2)
-                //{
-                //    return;
-                //}
-                //else if (snake.Count == 2)
-                //{
-                //    if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
-                //    {
-                //        MessageBox.Show(k1 + " " + kolUni + " " + k2);
-                //        a = 0;
-                //        a += 180;
-                //        third_third.RenderTransform = new RotateTransform(a);
-                //        third_third.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-
-                //    }
-                //}
-                //else if (snake.Count >= 3)
-                //{
-                //    MessageBox.Show(k1 + " " + kolUni + " " + k2);
-                //    if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
-                //    {
-                //        if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
-                //        {
-
-                //            a = 0;
-                //            a += 180;
-                //            third_third.RenderTransform = new RotateTransform(a);
-                //            third_third.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-                //        }
-                //    }
-                //    else if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
-                //    {
-
-                //        a = 0;
-                //        a += 180;
-                //        third_third.RenderTransform = new RotateTransform(a);
-                //        third_third.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-                //    }
-                //}
             }
             else
             {
@@ -2922,8 +3507,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("3", "4"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -3020,7 +3613,7 @@ namespace Domino
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                        
                         a = 0;
                         a += 180;
                         third_four.RenderTransform = new RotateTransform(a);
@@ -3029,15 +3622,21 @@ namespace Domino
                         snake.Add(new Bone("4", "3"));
                     }
                 }
-                else if (snake.Count >= 3)
+                else if (snake.Count >= 3 && snake.Count < 10)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                    
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
                         {
 
                             a = 0;
+                            if (kol == 9)
+                            {
+                                a += 90;
+                                k1 -= 140;
+                                k2 -= 200;
+                            }
                             a += 180;
                             third_four.RenderTransform = new RotateTransform(a);
                             third_four.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -3049,6 +3648,40 @@ namespace Domino
                     {
 
                         a = 0;
+                        if (kol == 9)
+                        {
+                            a += 90;
+                            k1 -= 140;
+                            k2 -= 200;
+                        }
+                        a += 180;
+                        third_four.RenderTransform = new RotateTransform(a);
+                        third_four.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("4", "3"));
+                    }
+                }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        third_four.RenderTransform = new RotateTransform(a);
+                        third_four.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("4", "3"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
                         a += 180;
                         third_four.RenderTransform = new RotateTransform(a);
                         third_four.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -3071,8 +3704,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("3", "5"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count -2].x || snake.Count>10 && snake[snake.Count-1].y== snake[snake.Count -2].x ||  snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -3169,7 +3810,6 @@ namespace Domino
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
                         a = 0;
                         a += 180;
                         third_five.RenderTransform = new RotateTransform(a);
@@ -3178,15 +3818,20 @@ namespace Domino
                         snake.Add(new Bone("5", "3"));
                     }
                 }
-                else if (snake.Count >= 3)
+                else if (snake.Count >= 3 && snake.Count < 10)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
                         {
 
                             a = 0;
+                            if (kol == 9)
+                            {
+                                a += 90;
+                                k1 -= 140;
+                                k2 -= 200;
+                            }
                             a += 180;
                             third_five.RenderTransform = new RotateTransform(a);
                             third_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -3198,6 +3843,40 @@ namespace Domino
                     {
 
                         a = 0;
+                        if (kol == 9)
+                        {
+                            a += 90;
+                            k1 -= 140;
+                            k2 -= 200;
+                        }
+                        a += 180;
+                        third_five.RenderTransform = new RotateTransform(a);
+                        third_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("5", "3"));
+                    }
+                }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        third_five.RenderTransform = new RotateTransform(a);
+                        third_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("5", "3"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
                         a += 180;
                         third_five.RenderTransform = new RotateTransform(a);
                         third_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -3220,8 +3899,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("3", "6"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -3318,7 +4005,7 @@ namespace Domino
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                        
                         a = 0;
                         a += 180;
                         third_six.RenderTransform = new RotateTransform(a);
@@ -3327,15 +4014,21 @@ namespace Domino
                         snake.Add(new Bone("6", "3"));
                     }
                 }
-                else if (snake.Count >= 3)
+                else if (snake.Count >= 3 && snake.Count < 10)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                   
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
                         {
 
                             a = 0;
+                            if (kol == 9)
+                            {
+                                a += 90;
+                                k1 -= 140;
+                                k2 -= 200;
+                            }
                             a += 180;
                             third_six.RenderTransform = new RotateTransform(a);
                             third_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -3347,6 +4040,40 @@ namespace Domino
                     {
 
                         a = 0;
+                        if (kol == 9)
+                        {
+                            a += 90;
+                            k1 -= 140;
+                            k2 -= 200;
+                        }
+                        a += 180;
+                        third_six.RenderTransform = new RotateTransform(a);
+                        third_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("6", "3"));
+                    }
+                }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        third_six.RenderTransform = new RotateTransform(a);
+                        third_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("6", "3"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
                         a += 180;
                         third_six.RenderTransform = new RotateTransform(a);
                         third_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -3369,8 +4096,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("4", "4"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -3459,44 +4194,6 @@ namespace Domino
                     k2 = 550 - 80;
                 }
 
-                //if (snake.Count < 2)
-                //{
-                //    return;
-                //}
-                //else if (snake.Count == 2)
-                //{
-                //    if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
-                //    {
-                //        MessageBox.Show(k1 + " " + kolUni + " " + k2);
-                //        a = 0;
-                //        a += 180;
-                //        four_four.RenderTransform = new RotateTransform(a);
-                //        four_four.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-                //    }
-                //}
-                //else if (snake.Count >= 3)
-                //{
-                //    MessageBox.Show(k1 + " " + kolUni + " " + k2);
-                //    if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
-                //    {
-                //        if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
-                //        {
-
-                //            a = 0;
-                //            a += 180;
-                //            four_four.RenderTransform = new RotateTransform(a);
-                //            four_four.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-                //        }
-                //    }
-                //    else if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
-                //    {
-
-                //        a = 0;
-                //        a += 180;
-                //        four_four.RenderTransform = new RotateTransform(a);
-                //        four_four.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-                //    }
-                //}
             }
             else
             {
@@ -3512,8 +4209,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("4", "5"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -3610,7 +4315,7 @@ namespace Domino
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                        
                         a = 0;
                         a += 180;
                         four_five.RenderTransform = new RotateTransform(a);
@@ -3619,15 +4324,21 @@ namespace Domino
                         snake.Add(new Bone("5", "4"));
                     }
                 }
-                else if (snake.Count >= 3)
+                else if (snake.Count >= 3 && snake.Count < 10)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                    
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
                         {
 
                             a = 0;
+                            if (kol == 9)
+                            {
+                                a += 90;
+                                k1 -= 140;
+                                k2 -= 200;
+                            }
                             a += 180;
                             four_five.RenderTransform = new RotateTransform(a);
                             four_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -3639,6 +4350,40 @@ namespace Domino
                     {
 
                         a = 0;
+                        if (kol == 9)
+                        {
+                            a += 90;
+                            k1 -= 140;
+                            k2 -= 200;
+                        }
+                        a += 180;
+                        four_five.RenderTransform = new RotateTransform(a);
+                        four_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("5", "4"));
+                    }
+                }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        four_five.RenderTransform = new RotateTransform(a);
+                        four_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("5", "4"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
                         a += 180;
                         four_five.RenderTransform = new RotateTransform(a);
                         four_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -3662,8 +4407,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("4", "6"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -3760,7 +4513,7 @@ namespace Domino
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                        
                         a = 0;
                         a += 180;
                         four_six.RenderTransform = new RotateTransform(a);
@@ -3769,15 +4522,21 @@ namespace Domino
                         snake.Add(new Bone("6", "4"));
                     }
                 }
-                else if (snake.Count >= 3)
+                else if (snake.Count >= 3 && snake.Count < 10)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                    
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
                         {
 
                             a = 0;
+                            if (kol == 9)
+                            {
+                                a += 90;
+                                k1 -= 140;
+                                k2 -= 200;
+                            }
                             a += 180;
                             four_six.RenderTransform = new RotateTransform(a);
                             four_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -3789,6 +4548,40 @@ namespace Domino
                     {
 
                         a = 0;
+                        if (kol == 9)
+                        {
+                            a += 90;
+                            k1 -= 140;
+                            k2 -= 200;
+                        }
+                        a += 180;
+                        four_six.RenderTransform = new RotateTransform(a);
+                        four_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("6", "4"));
+                    }
+                }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
+                        a += 180;
+                        four_six.RenderTransform = new RotateTransform(a);
+                        four_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("6", "4"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 200;
+                        k2 -= 80;
                         a += 180;
                         four_six.RenderTransform = new RotateTransform(a);
                         four_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -3811,8 +4604,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("5", "5"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -3901,44 +4702,6 @@ namespace Domino
                     k2 = 550 - 80;
                 }
 
-                //if (snake.Count < 2)
-                //{
-                //    return;
-                //}
-                //else if (snake.Count == 2)
-                //{
-                //    if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
-                //    {
-                //        MessageBox.Show(k1 + " " + kolUni + " " + k2);
-                //        a = 0;
-                //        a += 180;
-                //        five_five.RenderTransform = new RotateTransform(a);
-                //        five_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-                //    }
-                //}
-                //else if (snake.Count >= 3)
-                //{
-                //    MessageBox.Show(k1 + " " + kolUni + " " + k2);
-                //    if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
-                //    {
-                //        if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
-                //        {
-
-                //            a = 0;
-                //            a += 180;
-                //            five_five.RenderTransform = new RotateTransform(a);
-                //            five_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-                //        }
-                //    }
-                //    else if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
-                //    {
-
-                //        a = 0;
-                //        a += 180;
-                //        five_five.RenderTransform = new RotateTransform(a);
-                //        five_five.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-                //    }
-                //}
             }
             else if(snake.Count==1)
             {
@@ -3958,8 +4721,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("5", "6"));
-            if (snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if (snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x == snake[snake.Count - 2].y && snake[snake.Count - 1].x != snake[snake.Count - 2].x || snake[snake.Count - 1].y == snake[snake.Count - 2].y && snake[snake.Count - 1].y != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -4056,7 +4827,7 @@ namespace Domino
                 {
                     if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
                     {
-                        MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                        
                         a = 0;
                         a += 180;
                         five_six.RenderTransform = new RotateTransform(a);
@@ -4065,15 +4836,25 @@ namespace Domino
                         snake.Add(new Bone("6", "5"));
                     }
                 }
-                else if (snake.Count >= 3)
+                else if (snake.Count >= 3 && snake.Count<10)
                 {
-                    MessageBox.Show(k1 + " " + kolUni + " " + k2);
+                   
                     if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
                     {
                         if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
                         {
-
                             a = 0;
+                            if (kol == 9)
+                            {
+                                a += 90;
+                                k1 -= 140;
+                                k2 -= 200;
+                            }
+                            //else if (kol2 <= 7 && kol2 > 0)
+                            //{
+                            //    k1 += 200;
+                            //    k2 -= 80;
+                            //}
                             a += 180;
                             five_six.RenderTransform = new RotateTransform(a);
                             five_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -4085,6 +4866,45 @@ namespace Domino
                     {
 
                         a = 0;
+                        if (kol == 9)
+                        {
+                            a += 90;
+                            k1 -= 140;
+                            k2 -= 200;
+                        }
+                        //else if (kol2 <= 7 && kol2 > 0)
+                        //{
+                        //    k1 += 200;
+                        //    k2 -= 80;
+                        //}
+                        a += 180;
+                        five_six.RenderTransform = new RotateTransform(a);
+                        five_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("6", "5"));
+                    }
+                   
+                }
+                else if (snake.Count == 10)
+                {
+                    if (snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 100;
+                        a += 180;
+                        five_six.RenderTransform = new RotateTransform(a);
+                        five_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
+                        snake.Remove(snake[snake.Count - 1]);
+                        snake.Add(new Bone("6", "5"));
+                    }
+                }
+                else if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 2].x == snake[snake.Count - 1].x)
+                    {
+                        a = 0;
+                        k1 += 100;
+                        
                         a += 180;
                         five_six.RenderTransform = new RotateTransform(a);
                         five_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
@@ -4107,8 +4927,16 @@ namespace Domino
             k1 = 0;
             k2 = 0;
             snake.Add(new Bone("6", "6"));
-            if(snake.Count == 1 || snake.Count>=2 && snake[snake.Count-2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
+            if(snake.Count > 10 && snake[snake.Count - 1].x == snake[snake.Count - 2].x || snake.Count > 10 && snake[snake.Count - 1].y == snake[snake.Count - 2].x || snake.Count == 1 || snake.Count>=2 && snake[snake.Count-2].y == snake[snake.Count - 1].y || snake.Count >= 2 && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
             {
+                if (snake.Count > 10 && snake.Count < 17)
+                {
+                    if (snake[snake.Count - 1].x != snake[snake.Count - 2].x)
+                    {
+                        snake.Remove(snake[snake.Count - 1]);
+                        return;
+                    }
+                }
                 if (kol == 8)
                 {
 
@@ -4197,52 +5025,6 @@ namespace Domino
                     k2 = 550 - 80;
                 }
 
-                //if (snake.Count < 2)
-                //{
-                //    return;
-                //}
-                //else if (snake.Count == 2)
-                //{
-                //    if(snake[snake.Count - 2].y == snake[snake.Count - 1].y && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
-                //    {
-                //        return;
-                //    }
-                //    if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
-                //    {
-                //        MessageBox.Show(k1 + " " + kolUni + " " + k2);
-                //        a = 0;
-                //        a += 180;
-                //        six_six.RenderTransform = new RotateTransform(a);
-                //        six_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-                //    }
-                //}
-                //else if (snake.Count >= 3)
-                //{
-                //    if (snake[snake.Count - 2].y == snake[snake.Count - 1].y && snake[snake.Count - 2].y == snake[snake.Count - 1].x)
-                //    {
-                //        return;
-                //    }
-                //    MessageBox.Show(k1 + " " + kolUni + " " + k2);
-                //    if (snake[snake.Count - 2].x == snake[snake.Count - 1].y)
-                //    {
-                //        if (snake[snake.Count - 3].y == snake[snake.Count - 2].y)
-                //        {
-
-                //            a = 0;
-                //            a += 180;
-                //            six_six.RenderTransform = new RotateTransform(a);
-                //            six_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-                //        }
-                //    }
-                //    else if (snake[snake.Count - 2].y == snake[snake.Count - 1].y)
-                //    {
-
-                //        a = 0;
-                //        a += 180;
-                //        six_six.RenderTransform = new RotateTransform(a);
-                //        six_six.Margin = new Thickness(k1 + (kolUni * 100), 0, 0, k2);
-                //    }
-                //}
             }
             else
             {

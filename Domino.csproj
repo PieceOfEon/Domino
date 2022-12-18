@@ -7,4 +7,12 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="derevo.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="derevo.jpg" />
+  </ItemGroup>
+
 </Project>
