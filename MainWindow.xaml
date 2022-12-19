@@ -606,18 +606,32 @@
 
         </Border>
         <Border  x:Name="borderP2" HorizontalAlignment="Center" Height="140" Width="1200" Margin="0,644,0,0" Background="#7F008000">
-            
+
 
         </Border>
         <Border  x:Name="borderP1" HorizontalAlignment="Center" Height="140" Width="1200" Margin="0,365,0,0" Background="#7F008000" Visibility="Hidden">
 
 
         </Border>
-        <Button Width="100" Height="100" Content="Завершить ход" Margin="1016,400,84,284" Background="#7FDDDDDD" Click="Button_Click">
-            
+        <Button Width="140" Height="40" Content="Завершить ход" Margin="980,0,0,-135" Background="#99DDDDDD" Click="Button_Click" FontSize="16" FontFamily="Sitka Text">
+
         </Button>
-        <Button Width="100" Height="100" Content="Взять кость" Click="Button_Click_1">
+        <Button  x:Name="dop" Width="100" Height="40" Content="Взять кость" Click="Button_Click_1" FontSize="16" Margin="700,0,0,-135" FontFamily="Sitka Text" Background="#99DDDDDD"/>
+        <Border Width="1200" Height="430" VerticalAlignment="Top" Background="#00000000">
             
-        </Button>
+        </Border>
+        <Border Width="850" Height="230" HorizontalAlignment="Left" Background="#00000000">
+
+        </Border>
+        <Label x:Name="labelDemo" Width="1200" Height="800" Foreground="#FFFD8E09"  FontSize="68" Visibility="Hidden" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+            <Label.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="Black" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.Background>
+
+        </Label>
+        <MediaElement x:Name="Playerr" HorizontalAlignment="Left" Height="100" Margin="-154,24,0,0" VerticalAlignment="Top" Width="100" />
     </Grid>
 </Window>
